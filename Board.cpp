@@ -33,14 +33,6 @@ int Board::GetFieldStatus(int x, int y)
 	return m_board[x][y];
 }
 
-void Board::GetShip(int x, int y)
-{
-	//for (int i = 0;i < m_shipsOnBoard.size();i++) std::cout << m_shipsOnBoard[i].getLife();
-	//return &m_shipsOnBoard[m_board[x][y] -1];
-	m_shipsOnBoard[m_board[x][y] - 1].reduceLife();
-	std::cout << m_shipsOnBoard[m_board[x][y] - 1].getLife();
-}
-
 bool Board::CanPlace(Ship inputed)
 {	
 	int inputedX = inputed.getX();
@@ -138,6 +130,7 @@ std::string Board::IsShipPart(int &p, int &x, int &y)
 
 void Board::PrintAllShips()
 {
+	///Prints all ships, including hidden ones; only use at start
 	std::cout << "  |";
 
 	for (int i = 0; i < m_row; i++)

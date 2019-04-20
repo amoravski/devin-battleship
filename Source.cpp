@@ -9,6 +9,9 @@ std::ostream& operator<<(std::ostream&, Board&);
 
 int main()
 {
+	std::cout << "Welcome to Battleships!\n\n";
+	system("pause");
+	system("cls");
 	int shipCount[4];
 
 	enterShips(shipCount);
@@ -21,8 +24,10 @@ int main()
 
 	placeShips(playerOne, boardOne, shipCount);
 	placeShips(playerTwo, boardTwo, shipCount);
-	system("pause");
 
+	std::cout << "Legend: d - destroyed, m - missed, h - hidden\n";
+	system("pause");
+	system("cls");
 	int turnCounter = 1;
 	while (playerOne.getShipsPlaced() != 0 && playerTwo.getShipsPlaced() != 0) {
 		int xcoord = 0, ycoord = 0;
@@ -101,7 +106,7 @@ void enterShips(int shipCount[])
 }
 
 std::ostream& operator<<(std::ostream& output, Board& received){
-	///TODO : legend info once in the begining
+	///Custom cout overload
 	output << "  |";
 
 	for (int i = 0; i < received.GetRow(); i++)

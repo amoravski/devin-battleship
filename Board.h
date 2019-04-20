@@ -20,7 +20,6 @@ public:
 	int GetRow();
 	int GetCol();
 	int GetFieldStatus(int x, int y);
-	void GetShip(int, int);
 	bool CanPlace(Ship );
 	std::string IsShipPart(int&, int &x, int &y);
 	void PrintAllShips();
