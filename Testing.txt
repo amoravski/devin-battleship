@@ -1,40 +1,38 @@
-#include <iostream>
-#include <string>
+std::ostream& operator<<(std::ostream&, Board&) const;
+std::ostream& operator<<(std::ostream& output, Board& received) const {
+	///TODO : legend info once in the begining
+	output << " |";
 
-int main()
-{
-	int x = -1;
-	int y = 1;
-	int N = 3;
-	int M = 2;
-
-	try
+	for (int i = 0; i < received.GetRow(); i++)
 	{
-		if (x < 0 || y < 0 || x > N - 1 || y > M - 1)
+		output << i + 1 << " ";
+	}
+
+	cout << "-+";
+
+	for (int i = 0; i < 2 * received.GetRow() - 2; i++)
+	{
+		output << "-";
+	}
+
+	for (int i = 0; i < received.GetRow(); i++)
+	{
+		output << i + 1 << "|";
+		for (int k = 0; k < received.GetCol(); k++)
 		{
-			///TODO : optimize with exception
-			throw "out of range";
+			if (received.GetFieldStatus(i, k) >= 0)
+			{
+				output << "_ ";
+			}
+			else if (received.GetFieldStatus(i, k) == -1)
+			{
+				output << "d "
+			}
+			else
+			{
+				output << "m ";
+			}
 		}
+		output << endl;
 	}
-	catch (std::string e)
-	{
-		std::cout << e;
-	}
-
-	/*
-	try
-	{
-		if (x < 0 || y < 0 || x > N - 1 || y > M - 1)
-		{
-			///TODO : optimize with exception
-			throw "out of range";
-		}
-	}
-	catch (char* e)
-	{
-		std::cout << *e;
-	}
-	*/
-
-	return 0;
 }
