@@ -6,20 +6,20 @@
 #include <vector>
 #include "Ship.h"
 
-
-const int Col = 10;
-const int Row = 10;
-
 class Board
 {
 private:
-	int board[Col][Row];
-	std::vector<Ship> shipsOnBoard;
-	int shipCounter = 1;
+	std::vector<std::vector<int> > m_board;
+	std::vector<Ship> m_shipsOnBoard;
+	int m_shipCounter = 1;
+	int m_row;
+	int m_col;
 public:
-	Board();
+	Board(int, int);
 	~Board();
+	int GetRow();
+	int GetCol();
+	int GetFieldStatus(int x, int y);
 	bool CanPlace(Ship &);
 	char* IsShipPart(int &x, int &y);
 };
-
