@@ -10,17 +10,17 @@ Player::Player(int number)
     num = number;
 }
 
-Player::getName() 
+std::string Player::getName() 
 {
     return name;
 }
 
-Player::getTurn() 
+int Player::getTurn() 
 {
     return turn;
 }
 
-Player::getNumber() 
+int Player::getNumber() 
 {
     return num;
 }

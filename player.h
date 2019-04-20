@@ -1,9 +1,9 @@
 class Player
 {
     public:
-        std::string getName( void);
-        int getTurn( void );
-        int getNumber( void );
+        std::string getName();
+        int getTurn();
+        int getNumber();
         Player(int);
     private:
         std::string name;
