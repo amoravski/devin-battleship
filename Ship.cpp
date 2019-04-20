@@ -1,15 +1,12 @@
-#include "ship.h"
+#include "Ship.h"
+#include<iostream>
+using namespace std;
 
-
-Ship::Ship()
+Ship::Ship(int sizeGiven)
 {
-	while (1)
-	{
-		cout << "Size: ";
-		cin >> size;
-		if (size < 6 and size > 1)
-			break;
-	}
+	status = 'h';
+	cout << "Placing a ship with size: " << sizeGiven;
+	size = sizeGiven;
 
 	while (1)
 	{

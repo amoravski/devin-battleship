@@ -2,10 +2,11 @@
 #include<string>
 #include "player.h"
 #include "Ship.h"
+#include "Board.h"
 
 Player::Player(int number)
 {
-    std::cout << "Making player number:" << number << "...\n";
+    std::cout << "Making player number " << number << "...\n";
     std::cout << "Enter name: ";
     std::cin >> name;
     num = number;
@@ -39,10 +40,20 @@ int Player::getShipsPlaced()
 	return shipsPlaced;
 }
 
-void Player::makeShip()
+void Player::makeShip(Board& b, int size)
 {
-	Ship ship;
+	Ship ship(size);
 	// Send to board
+
+	b.CanPlace(ship);
+
 	shipsToPlace--;
 	shipsPlaced++;
+}
+
+bool Player::attack(Board& b, int x, int y)
+{
+	std::string result = b.IsShipPart(x, y);
+	std::cout << result;
+	return true;
 }

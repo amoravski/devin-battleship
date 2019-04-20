@@ -7,7 +7,7 @@ Board::Board()
 	{
 		for (int k = 0; k < Col; k++)
 		{
-			board[i][k] = p;
+			board[i][k] = 0;
 		}
 	}
 }
@@ -16,12 +16,12 @@ Board::~Board()
 {
 }
 
-bool Board::CanPlace(Ship &inputed, int turn)
+bool Board::CanPlace(Ship &inputed)
 {	
-	int inputedX = inputed.GetX();
-	int inputedY = inputed.GetY();
-	char inputedRot = inputed.GetRot();
-	int inputedSize = inputed.GetSize();
+	int inputedX = inputed.getX();
+	int inputedY = inputed.getY();
+	char inputedRot = inputed.getRot();
+	int inputedSize = inputed.getSize();
 
 	if (inputedX == 0 || inputedY == 0
 		|| (inputedX + inputedSize) > Row - 1 || (inputedY + inputedSize) > Col - 1)

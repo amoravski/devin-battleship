@@ -1,3 +1,4 @@
+#include "Board.h"
 class Player
 {
 public:
@@ -6,7 +7,8 @@ public:
 	int getNumber();
 	int getShipsToPlace();
 	int getShipsPlaced();
-	void makeShip();
+	void makeShip( Board & , int);
+	bool attack(Board&, int, int);
 	Player(int);
 private:
 	std::string name;

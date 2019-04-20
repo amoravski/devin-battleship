@@ -20,6 +20,6 @@ public:
 	Board();
 	~Board();
 	bool CanPlace(Ship &);
-	std::exception* IsShipPart(int &x, int &y);
+	char* IsShipPart(int &x, int &y);
 };
 
