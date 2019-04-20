@@ -42,10 +42,16 @@ int Player::getShipsPlaced()
 
 void Player::makeShip(Board& b, int size)
 {
-	Ship ship(size);
+	
 	// Send to board
-
-	b.CanPlace(ship);
+	while(true)
+	{
+		Ship ship(size);
+		if (b.CanPlace(ship)) {
+			break;
+		}
+		std::cout << "Invalid location, try again.\n";
+	}
 
 	shipsToPlace--;
 	shipsPlaced++;
@@ -53,7 +59,21 @@ void Player::makeShip(Board& b, int size)
 
 bool Player::attack(Board& b, int x, int y)
 {
-	std::string result = b.IsShipPart(x, y);
+	std::string result = b.IsShipPart(shipsPlaced,x, y);
 	std::cout << result;
-	return true;
+	if (result == "Hit!\n")
+	{
+		return true;
+	}
+	if (result == "Out of range\n")
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void Player::reduceShipsPlaced()
+{
+	shipsPlaced--;
 }

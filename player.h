@@ -7,6 +7,7 @@ public:
 	int getNumber();
 	int getShipsToPlace();
 	int getShipsPlaced();
+	void reduceShipsPlaced();
 	void makeShip( Board & , int);
 	bool attack(Board&, int, int);
 	Player(int);
