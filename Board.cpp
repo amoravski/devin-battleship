@@ -2,6 +2,14 @@
 
 Board::Board()
 {
+	Ship p;
+	for (int i = 0; i < Row; i++)
+	{
+		for (int k = 0; k < Col; k++)
+		{
+			board[i][k] = p;
+		}
+	}
 }
 
 Board::~Board()
@@ -16,7 +24,7 @@ bool Board::CanPlace(Ship &inputed, int turn)
 	int inputedSize = inputed.GetSize();
 
 	if (inputedX == 0 || inputedY == 0
-		|| (inputedX + inputedSize) > N - 1 || (inputedY + inputedSize) > M - 1)
+		|| (inputedX + inputedSize) > Row - 1 || (inputedY + inputedSize) > Col - 1)
 	{
 		return false;
 	}
@@ -30,7 +38,7 @@ bool Board::CanPlace(Ship &inputed, int turn)
 				return false;
 			}
 		}
-
+		shipsOnBoard.push_back(inputed);
 		for (int i = 0; i < inputedSize; i++)
 		{
 			board[inputedY][inputedX + i] = shipCounter;
@@ -57,13 +65,28 @@ bool Board::CanPlace(Ship &inputed, int turn)
 	return true;
 }
 
-char* Board::IsShipPart(int &x, int &y, int turn)
+char* Board::IsShipPart(int &x, int &y)
 {
-	if (x < 0 || y < 0 || x > N + 1 || y > M + 1)
+	if (x < 0 || y < 0 || x > Row + 1 || y > Col + 1)
 	{
 		std::string error = "range error";
 		return &error[0];
 	}
 
-	if(board[])
+	if (board[x][y] > 0) //if (board[x][y] && shipsOnBoard[board[x][y] - 1].getStatus = 'h')
+	{
+		board[x][y] = -1;
+		std::string correct = "correct";
+		return &correct[0];
+	}
+	else if (board[x][y] == -1)
+	{
+		std::string error = "already destroyed";
+		return &error[0];
+	}
+	else
+	{
+		std::string error = "missed";
+		return &error[0];
+	}
 }

@@ -3,20 +3,23 @@
 #include <string>
 #include <exception>
 #include <stdexcept>
+#include <vector>
+#include "Ship.h"
 
-const int N = 10;
-const int M = 10;
+
+const int Col = 10;
+const int Row = 10;
 
 class Board
 {
 private:
-	int board1[N][M];
-	int board2[N][M];
+	int board[Col][Row];
+	std::vector<Ship> shipsOnBoard;
 	int shipCounter = 1;
 public:
 	Board();
 	~Board();
-	bool CanPlace(Ship &, int turn);
-	std::exception* IsShipPart(int &x, int &y, int turn);
+	bool CanPlace(Ship &);
+	std::exception* IsShipPart(int &x, int &y);
 };
 
