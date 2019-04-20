@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+	int x = -1;
+	int y = 1;
+	int N = 3;
+	int M = 2;
+
+	try
+	{
+		if (x < 0 || y < 0 || x > N - 1 || y > M - 1)
+		{
+			///TODO : optimize with exception
+			throw "out of range";
+		}
+	}
+	catch (std::string e)
+	{
+		std::cout << e;
+	}
+
+	/*
+	try
+	{
+		if (x < 0 || y < 0 || x > N - 1 || y > M - 1)
+		{
+			///TODO : optimize with exception
+			throw "out of range";
+		}
+	}
+	catch (char* e)
+	{
+		std::cout << *e;
+	}
+	*/
+
+	return 0;
+}
