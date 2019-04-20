@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include "player.h"
+#include "Ship.h"
 
 Player::Player(int number)
 {
@@ -8,6 +9,9 @@ Player::Player(int number)
     std::cout << "Enter name: ";
     std::cin >> name;
     num = number;
+	turn = number;
+	shipsToPlace = 10;
+	shipsPlaced = 0;
 }
 
 std::string Player::getName() 
@@ -23,4 +27,22 @@ int Player::getTurn()
 int Player::getNumber() 
 {
     return num;
+}
+
+int Player::getShipsToPlace()
+{
+	return shipsToPlace;
+}
+
+int Player::getShipsPlaced()
+{
+	return shipsPlaced;
+}
+
+void Player::makeShip()
+{
+	Ship ship;
+	// Send to board
+	shipsToPlace--;
+	shipsPlaced++;
 }
